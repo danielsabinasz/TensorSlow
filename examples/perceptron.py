@@ -9,7 +9,7 @@ red_points = np.random.randn(50, 2) - 2*np.ones((50, 2))
 blue_points = np.random.randn(50, 2) + 2*np.ones((50, 2))
 
 # Create a new graph
-ts.Graph().as_default()
+graph=ts.Graph().as_default()
 
 X = ts.placeholder()
 c = ts.placeholder()
@@ -51,6 +51,8 @@ W_value = session.run(W)
 print("Weight matrix:\n", W_value)
 b_value = session.run(b)
 print("Bias:\n", b_value)
+
+graph.export_dot()
 
 # Plot a line y = -x
 x_axis = np.linspace(-4, 4, 100)

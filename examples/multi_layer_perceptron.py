@@ -20,7 +20,7 @@ plt.scatter(blue_points[:,0], blue_points[:,1], color='blue')
 plt.show()
 
 # Create a new graph
-ts.Graph().as_default()
+graph = ts.Graph().as_default()
 
 # Create training input placeholder
 X = ts.placeholder()
@@ -62,6 +62,8 @@ for step in range(1000):
     if step % 100 == 0:
         print("Step:", step, " Loss:", J_value)
     session.run(minimization_op, feed_dict)
+
+graph.export_dot('mlp_')
 
 # Print final result
 W_hidden_value = session.run(W_hidden)
